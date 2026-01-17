@@ -87,7 +87,7 @@ export default function Report() {
           <div className="relative z-10 max-w-4xl space-y-6">
             <motion.div variants={item} className="inline-flex items-center rounded-full bg-secondary/20 border border-secondary/30 px-4 py-1.5 text-sm font-bold text-secondary backdrop-blur-sm uppercase tracking-widest">
               <span className="flex h-2 w-2 rounded-full bg-secondary mr-2 animate-pulse"></span>
-              Strategic Autonomy & Results
+              Q4 2025 Highlights
             </motion.div>
             <motion.h1 variants={item} className="text-4xl md:text-7xl font-bold tracking-tight leading-none text-white">
               Elevating Impact <br className="hidden md:block"/> through Innovation
