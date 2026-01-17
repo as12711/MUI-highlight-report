@@ -420,9 +420,6 @@ export default function Report() {
               <p className="text-primary font-black uppercase tracking-tighter text-2xl">Aunray Stanford</p>
               <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Program Development • Outreach • Partnerships</p>
            </div>
-           <div className="text-right hidden md:block">
-              <p className="text-xs text-muted-foreground max-w-[240px]">Strategic autonomy yielding measurable returns well beyond traditional office-based activities.</p>
-           </div>
         </div>
       </footer>
     </div>
