@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Users, 
-  Handshake, 
-  Cpu, 
-  Calendar, 
-  ArrowRight, 
-  CheckCircle2, 
+import {
+  Users,
+  Handshake,
+  Cpu,
+  Calendar,
+  ArrowRight,
+  CheckCircle2,
   Database,
   Globe,
   Smartphone,
@@ -14,12 +15,14 @@ import {
   FileText,
   ShieldCheck,
   ExternalLink,
-  Heart
+  Heart,
+  ZoomIn
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 // Asset imports
 import adminDashboardImg from "@assets/Screenshot_2026-01-16_at_18-18-10_Admin_Dashboard_-_Fatherhood_1768617584305.png";
@@ -46,6 +49,8 @@ const item = {
 };
 
 export default function Report() {
+  const [enlargedImage, setEnlargedImage] = useState<{ src: string; alt: string } | null>(null);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -140,8 +145,24 @@ export default function Report() {
                   </div>
                 </Card>
                 <div className="grid grid-cols-2 gap-4">
-                   <img src={adminDashboardImg} alt="Admin Dashboard" className="rounded-xl border shadow-sm hover:scale-[1.02] transition-transform" />
-                   <img src={fatherhoodSignupImg} alt="Mobile Signup Form" className="rounded-xl border shadow-sm hover:scale-[1.02] transition-transform" />
+                   <div
+                     className="relative group cursor-pointer"
+                     onClick={() => setEnlargedImage({ src: adminDashboardImg, alt: "Admin Dashboard" })}
+                   >
+                     <img src={adminDashboardImg} alt="Admin Dashboard" className="rounded-xl border shadow-sm hover:scale-[1.02] transition-transform" />
+                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all rounded-xl flex items-center justify-center">
+                       <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                     </div>
+                   </div>
+                   <div
+                     className="relative group cursor-pointer"
+                     onClick={() => setEnlargedImage({ src: fatherhoodSignupImg, alt: "Mobile Signup Form" })}
+                   >
+                     <img src={fatherhoodSignupImg} alt="Mobile Signup Form" className="rounded-xl border shadow-sm hover:scale-[1.02] transition-transform" />
+                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all rounded-xl flex items-center justify-center">
+                       <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                     </div>
+                   </div>
                 </div>
              </div>
              
@@ -426,6 +447,20 @@ export default function Report() {
            </div>
         </div>
       </footer>
+
+      {/* Image Lightbox */}
+      <Dialog open={!!enlargedImage} onOpenChange={() => setEnlargedImage(null)}>
+        <DialogContent className="max-w-4xl w-[90vw] p-2 bg-black/95 border-none">
+          <DialogTitle className="sr-only">{enlargedImage?.alt}</DialogTitle>
+          {enlargedImage && (
+            <img
+              src={enlargedImage.src}
+              alt={enlargedImage.alt}
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
