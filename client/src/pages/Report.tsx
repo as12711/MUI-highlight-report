@@ -405,7 +405,11 @@ export default function Report() {
                     <h4 className="text-6xl font-bold text-secondary mb-2">500</h4>
                     <p className="text-sm font-black uppercase tracking-[0.3em] text-white/60">Participant Data Goal</p>
                     <div className="mt-8">
-                       <Button className="bg-secondary text-primary hover:bg-white font-black w-full uppercase tracking-widest text-xs">Full Highlight Report PDF</Button>
+                       <Button asChild className="bg-secondary text-primary hover:bg-white font-black w-full uppercase tracking-widest text-xs">
+                         <a href="./Q4_2025_Highlight_Report.docx" target="_blank" rel="noopener noreferrer">
+                           Full Highlight Report <ExternalLink className="ml-2 h-3 w-3" />
+                         </a>
+                       </Button>
                     </div>
                  </div>
               </div>
